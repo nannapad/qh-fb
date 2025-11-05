@@ -1,0 +1,43 @@
+type User @table {
+  displayName: String!
+  email: String!
+  createdAt: Timestamp!
+  photoUrl: String
+  bio: String
+}
+
+type Article @table {
+  title: String!
+  content: String!
+  status: String!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  author: User
+  category: Category
+  excerpt: String
+  tags: [String]
+}
+
+type Category @table {
+  name: String!
+  slug: String!
+  createdAt: Timestamp!
+  description: String
+  parentCategory: Category
+}
+
+type Comment @table {
+  content: String!
+  createdAt: Timestamp!
+  author: User
+  article: Article
+  parentComment: Comment
+}
+
+type SubscriptionType @table {
+  type: String!
+  createdAt: Timestamp!
+  user: User
+  article: Article
+  category: Category
+}
